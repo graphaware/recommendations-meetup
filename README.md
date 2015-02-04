@@ -25,7 +25,7 @@ Deploying the Engine
 2. unzip to a location
 3. [Download GraphAware](http://graphaware.com/downloads/graphaware-server-community-all-2.1.6.27.jar) and place into `plugins` of Neo4j
 4. run `mvn clean package` on your recommendation engine
-5. take the produced .jar **with dependencies** and place into `plugins` as well
+5. take the produced .jar **with dependencies** from `target` and place into `plugins` as well
 6. (re)start Neo4j
 7. populate your local Neo4j instance (e.g. using Graphgen)
 8. hit one of the URLs you defined in your controllers, e.g. [http://localhost:7474/graphaware/recommendation/Napoleon](http://localhost:7474/graphaware/recommendation/Napoleon)
