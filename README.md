@@ -27,4 +27,5 @@ Deploying the Engine
 4. run `mvn clean package` on your recommendation engine
 5. take the produced .jar **with dependencies** and place into `plugins` as well
 6. (re)start Neo4j
-7. hit one of the URLs you defined in your controllers, e.g. http://localhost:7474/graphaware/recommendation/Napoleon
+7. populate your local Neo4j instance (e.g. using Graphgen)
+8. hit one of the URLs you defined in your controllers, e.g. [http://localhost:7474/graphaware/recommendation/Napoleon](http://localhost:7474/graphaware/recommendation/Napoleon)

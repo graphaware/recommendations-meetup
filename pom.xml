@@ -57,8 +57,7 @@
             <groupId>com.graphaware.neo4j</groupId>
             <artifactId>recommendation-engine</artifactId>
             <version>${graphaware.version}.2</version>
-            <scope>provided</scope>
-        </dependency>      
+        </dependency>
 
         <dependency>
             <groupId>com.graphaware.neo4j</groupId>
@@ -103,7 +102,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <appendAssemblyId>false</appendAssemblyId>
+                    <appendAssemblyId>true</appendAssemblyId>
                 </configuration>
             </plugin>           
         </plugins>
