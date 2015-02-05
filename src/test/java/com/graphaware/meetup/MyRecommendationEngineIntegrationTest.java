@@ -42,12 +42,12 @@ public class MyRecommendationEngineIntegrationTest extends DatabaseIntegrationTe
     @Test
     public void shouldRecommendSomething() {
         try (Transaction tx = getDatabase().beginTx()) {
-            Node michal = getSingle(getDatabase().findNodesByLabelAndProperty(DynamicLabel.label("Person"), "name", "Napoleon"));
-            List<Recommendation<Node>> recommendations = engine.recommend(michal, Mode.REAL_TIME, 5);
+            Node person = getSingle(getDatabase().findNodesByLabelAndProperty(DynamicLabel.label("Person"), "name", "Napoleon"));
+            List<Recommendation<Node>> recommendations = engine.recommend(person, Mode.REAL_TIME, 5);
 
             assertFalse(recommendations.isEmpty());
 
-            printRecommendations(michal, recommendations);
+            printRecommendations(person, recommendations);
         }
     }
 
