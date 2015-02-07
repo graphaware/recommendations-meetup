@@ -6,8 +6,10 @@ Getting Started
 ---------------
 
 1. Clone this repository: `git clone https://github.com/graphaware/recommendations-meetup.git`
-2. Open in your favourite IDE, preferable IntelliJ IDEA (we can help you with that)
-3. Start hacking
+2. `cd recommendations-meetup`
+3. `mvn clean test`, the build should be successful
+4. Open in your favourite IDE, preferable IntelliJ IDEA (we can help you with that)
+5. Start hacking
 
 Generating Sample Data
 ----------------------
