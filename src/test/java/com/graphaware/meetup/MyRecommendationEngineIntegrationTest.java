@@ -4,18 +4,19 @@ import com.graphaware.reco.generic.context.Mode;
 import com.graphaware.reco.generic.engine.TopLevelRecommendationEngine;
 import com.graphaware.reco.generic.log.Slf4jRecommendationLogger;
 import com.graphaware.reco.generic.result.Recommendation;
+import com.graphaware.test.data.DatabasePopulator;
+import com.graphaware.test.data.GraphgenPopulator;
 import com.graphaware.test.integration.DatabaseIntegrationTest;
 import org.junit.Test;
-import org.neo4j.cypher.javacompat.ExecutionEngine;
 import org.neo4j.graphdb.DynamicLabel;
-import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Transaction;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.IOException;
 import java.util.List;
 
 import static com.graphaware.common.util.IterableUtils.getSingle;
-import static com.graphaware.meetup.CypherUtil.runCypher;
 import static org.junit.Assert.assertFalse;
 
 public class MyRecommendationEngineIntegrationTest extends DatabaseIntegrationTest {
@@ -29,14 +30,13 @@ public class MyRecommendationEngineIntegrationTest extends DatabaseIntegrationTe
     }
 
     @Override
-    protected GraphDatabaseService createDatabase() {
-        GraphDatabaseService db = super.createDatabase();
-
-        ExecutionEngine executionEngine = new ExecutionEngine(db);
-        runCypher(executionEngine, "schema.cyp");
-        runCypher(executionEngine, "data.cyp");
-
-        return db;
+    protected DatabasePopulator databasePopulator() {
+        return new GraphgenPopulator() {
+            @Override
+            protected String file() throws IOException {
+                return new ClassPathResource("test-data.cyp").getFile().getAbsolutePath();
+            }
+        };
     }
 
     @Test
