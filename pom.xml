@@ -56,7 +56,7 @@
         <dependency>
             <groupId>com.graphaware.neo4j</groupId>
             <artifactId>recommendation-engine</artifactId>
-            <version>${graphaware.version}.3</version>
+            <version>${graphaware.version}.4</version>
         </dependency>
 
         <dependency>

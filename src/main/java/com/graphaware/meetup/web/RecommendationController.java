@@ -1,7 +1,6 @@
 package com.graphaware.meetup.web;
 
 import com.graphaware.meetup.MyRecommendationEngine;
-import com.graphaware.reco.generic.context.Mode;
 import com.graphaware.reco.generic.engine.TopLevelRecommendationEngine;
 import com.graphaware.reco.generic.result.Recommendation;
 import org.neo4j.graphdb.*;
@@ -31,12 +30,12 @@ public class RecommendationController {
     @ResponseBody
     public List<RecommendationVO> recommend(@PathVariable String name, @RequestParam(defaultValue = "10") int limit) {
         try (Transaction tx = database.beginTx()) {
-            return convert(engine.recommend(findByName(name), Mode.REAL_TIME, limit));
+            return convert(engine.recommend(findByName(name), limit));
         }
     }
 
     private Node findByName(String name) {
-        return getSingle(database.findNodesByLabelAndProperty(DynamicLabel.label("Person"), "name", name), "Person with name " + name + " does not exist.");
+        return getSingle(database.findNodes(DynamicLabel.label("Person"), "name", name), "Person with name " + name + " does not exist.");
     }
 
     private List<RecommendationVO> convert(List<Recommendation<Node>> recommendations) {
