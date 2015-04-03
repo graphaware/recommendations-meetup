@@ -13,7 +13,7 @@
         <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <neo4j.version>2.2.0</neo4j.version>
-        <graphaware.version>2.2.0.28</graphaware.version>
+        <graphaware.version>2.2.0.30</graphaware.version>
     </properties>
 
     <dependencies>
@@ -35,14 +35,14 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.1.4.RELEASE</version>
+            <version>4.1.6.RELEASE</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.1.4.RELEASE</version>
+            <version>4.1.6.RELEASE</version>
             <scope>provided</scope>
         </dependency>
 
@@ -56,7 +56,7 @@
         <dependency>
             <groupId>com.graphaware.neo4j</groupId>
             <artifactId>recommendation-engine</artifactId>
-            <version>${graphaware.version}.5</version>
+            <version>${graphaware.version}.6</version>
         </dependency>
 
         <dependency>
