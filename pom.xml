@@ -33,22 +33,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>4.1.6.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>4.1.6.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>com.graphaware.neo4j</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>graphaware-framework-embedded</artifactId>
             <version>${graphaware.version}</version>
             <scope>provided</scope>
         </dependency>
