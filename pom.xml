@@ -12,8 +12,8 @@
     <properties>
         <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <neo4j.version>2.2.1</neo4j.version>
-        <graphaware.version>2.2.1.30</graphaware.version>
+        <neo4j.version>2.2.2</neo4j.version>
+        <graphaware.version>2.2.2.31</graphaware.version>
     </properties>
 
     <dependencies>
