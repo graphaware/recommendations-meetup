@@ -1,5 +1,6 @@
 package com.graphaware.meetup;
 
+import com.graphaware.reco.generic.config.SimpleConfig;
 import com.graphaware.reco.generic.engine.TopLevelRecommendationEngine;
 import com.graphaware.reco.generic.log.Slf4jRecommendationLogger;
 import com.graphaware.reco.generic.result.Recommendation;
@@ -42,7 +43,7 @@ public class MyRecommendationEngineIntegrationTest extends DatabaseIntegrationTe
     public void shouldRecommendSomething() {
         try (Transaction tx = getDatabase().beginTx()) {
             Node person = getSingle(getDatabase().findNodes(DynamicLabel.label("Person"), "name", "Napoleon"));
-            List<Recommendation<Node>> recommendations = engine.recommend(person, 5);
+            List<Recommendation<Node>> recommendations = engine.recommend(person, new SimpleConfig(5));
 
             assertFalse(recommendations.isEmpty());
 

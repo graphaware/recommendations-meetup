@@ -22,7 +22,7 @@ public class DummyEngine extends SingleScoreRecommendationEngine<Node, Node> {
         for (Node node : getAllNodes(input)) {
             addToResult(result, node, randomPartialScore());
 
-            if (context.limit() <= result.size()) {
+            if (context.config().limit() <= result.size()) {
                 break;
             }
         }

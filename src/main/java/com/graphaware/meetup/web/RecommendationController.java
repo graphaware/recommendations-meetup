@@ -1,6 +1,7 @@
 package com.graphaware.meetup.web;
 
 import com.graphaware.meetup.MyRecommendationEngine;
+import com.graphaware.reco.generic.config.SimpleConfig;
 import com.graphaware.reco.generic.engine.TopLevelRecommendationEngine;
 import com.graphaware.reco.generic.result.Recommendation;
 import org.neo4j.graphdb.*;
@@ -30,7 +31,7 @@ public class RecommendationController {
     @ResponseBody
     public List<RecommendationVO> recommend(@PathVariable String name, @RequestParam(defaultValue = "10") int limit) {
         try (Transaction tx = database.beginTx()) {
-            return convert(engine.recommend(findByName(name), limit));
+            return convert(engine.recommend(findByName(name), new SimpleConfig(limit)));
         }
     }
 
