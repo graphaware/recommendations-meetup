@@ -26,7 +26,7 @@ Deploying the Engine
 
 1. [Download Neo4j 2.2.2](http://neo4j.com/download-thanks/?edition=community&release=2.2.2&flavour=unix)
 2. unzip to a location
-3. [Download GraphAware](http://graphaware.com/downloads/graphaware-server-community-all-2.2.2.31.jar) and place into `plugins` of Neo4j
+3. [Download GraphAware](http://graphaware.com/downloads/graphaware-server-community-all-2.2.2.32.jar) and place into `plugins` of Neo4j
 4. run `mvn clean package` on your recommendation engine
 5. take the produced .jar **with dependencies** from `target` and place into `plugins` as well
 6. (re)start Neo4j

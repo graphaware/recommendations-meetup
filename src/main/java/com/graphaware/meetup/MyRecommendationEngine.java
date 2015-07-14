@@ -6,14 +6,14 @@ import com.graphaware.reco.generic.filter.BlacklistBuilder;
 import com.graphaware.reco.generic.filter.Filter;
 import com.graphaware.reco.generic.log.Logger;
 import com.graphaware.reco.generic.post.PostProcessor;
-import com.graphaware.reco.neo4j.engine.Neo4jTopLevelDelegatingEngine;
+import com.graphaware.reco.neo4j.engine.Neo4jTopLevelDelegatingRecommendationEngine;
 import org.neo4j.graphdb.Node;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class MyRecommendationEngine extends Neo4jTopLevelDelegatingEngine {
+public class MyRecommendationEngine extends Neo4jTopLevelDelegatingRecommendationEngine {
 
     @Override
     protected List<RecommendationEngine<Node, Node>> engines() {
