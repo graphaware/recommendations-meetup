@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.graphaware.neo4j</groupId>
             <artifactId>recommendation-engine</artifactId>
-            <version>${graphaware.version}.8</version>
+            <version>${graphaware.version}.9</version>
         </dependency>
 
         <dependency>
