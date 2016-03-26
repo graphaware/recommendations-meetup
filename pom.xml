@@ -101,5 +101,17 @@
             </plugin>           
         </plugins>
     </build>
+    <repositories>
+      <repository>
+        <id>neo4j-contrib-releases</id>
+        <url>https://raw.github.com/neo4j-contrib/m2/master/releases</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+      </repository>
+    </repositories>
 
 </project>
