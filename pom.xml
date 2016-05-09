@@ -10,10 +10,10 @@
     <url>http://graphaware.com</url>
 
     <properties>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <neo4j.version>2.3.3</neo4j.version>
-        <graphaware.version>2.3.3.37</graphaware.version>
+        <neo4j.version>3.0.1</neo4j.version>
+        <graphaware.version>3.0.1.38</graphaware.version>
     </properties>
 
     <dependencies>

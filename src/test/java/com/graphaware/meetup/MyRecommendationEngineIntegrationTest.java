@@ -7,8 +7,10 @@ import com.graphaware.reco.generic.result.Recommendation;
 import com.graphaware.test.data.DatabasePopulator;
 import com.graphaware.test.data.GraphgenPopulator;
 import com.graphaware.test.integration.DatabaseIntegrationTest;
+import com.graphaware.test.integration.EmbeddedDatabaseIntegrationTest;
 import org.junit.Test;
 import org.neo4j.graphdb.DynamicLabel;
+import org.neo4j.graphdb.Label;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Transaction;
 import org.springframework.core.io.ClassPathResource;
@@ -19,7 +21,7 @@ import java.util.List;
 import static com.graphaware.common.util.IterableUtils.getSingle;
 import static org.junit.Assert.assertFalse;
 
-public class MyRecommendationEngineIntegrationTest extends DatabaseIntegrationTest {
+public class MyRecommendationEngineIntegrationTest extends EmbeddedDatabaseIntegrationTest {
 
     private TopLevelRecommendationEngine<Node, Node> engine;
 
@@ -42,7 +44,7 @@ public class MyRecommendationEngineIntegrationTest extends DatabaseIntegrationTe
     @Test
     public void shouldRecommendSomething() {
         try (Transaction tx = getDatabase().beginTx()) {
-            Node person = getSingle(getDatabase().findNodes(DynamicLabel.label("Person"), "name", "Napoleon"));
+            Node person = getSingle(getDatabase().findNodes(Label.label("Person"), "name", "Napoleon"));
             List<Recommendation<Node>> recommendations = engine.recommend(person, new SimpleConfig(5));
 
             assertFalse(recommendations.isEmpty());

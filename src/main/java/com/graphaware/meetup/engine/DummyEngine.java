@@ -5,7 +5,6 @@ import com.graphaware.reco.generic.engine.SingleScoreRecommendationEngine;
 import com.graphaware.reco.generic.result.PartialScore;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.ResourceIterable;
-import org.neo4j.tooling.GlobalGraphOperations;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +44,6 @@ public class DummyEngine extends SingleScoreRecommendationEngine<Node, Node> {
     }
 
     private ResourceIterable<Node> getAllNodes(Node input) {
-        return GlobalGraphOperations.at(input.getGraphDatabase()).getAllNodes();
+        return input.getGraphDatabase().getAllNodes();
     }
 }

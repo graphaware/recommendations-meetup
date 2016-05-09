@@ -2,14 +2,14 @@ package com.graphaware.meetup;
 
 import com.graphaware.test.data.DatabasePopulator;
 import com.graphaware.test.data.GraphgenPopulator;
-import com.graphaware.test.integration.GraphAwareApiTest;
+import com.graphaware.test.integration.GraphAwareIntegrationTest;
 import org.eclipse.jetty.http.HttpStatus;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 
-public class MyRecommendationEngineEnd2EndTest extends GraphAwareApiTest {
+public class MyRecommendationEngineEnd2EndTest extends GraphAwareIntegrationTest {
 
     @Override
     protected DatabasePopulator databasePopulator() {
