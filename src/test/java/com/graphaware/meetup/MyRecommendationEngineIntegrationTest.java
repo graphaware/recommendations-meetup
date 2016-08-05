@@ -1,5 +1,6 @@
 package com.graphaware.meetup;
 
+import com.graphaware.meetup.procedure.MeetupRecommendationProcedure;
 import com.graphaware.reco.generic.config.SimpleConfig;
 import com.graphaware.reco.generic.engine.TopLevelRecommendationEngine;
 import com.graphaware.reco.generic.log.Slf4jRecommendationLogger;
@@ -9,14 +10,17 @@ import com.graphaware.test.data.GraphgenPopulator;
 import com.graphaware.test.integration.DatabaseIntegrationTest;
 import com.graphaware.test.integration.EmbeddedDatabaseIntegrationTest;
 import org.junit.Test;
-import org.neo4j.graphdb.DynamicLabel;
-import org.neo4j.graphdb.Label;
-import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.Transaction;
+import org.neo4j.graphdb.*;
+import org.neo4j.kernel.api.exceptions.KernelException;
+import org.neo4j.kernel.impl.proc.ProcedureRegistry;
+import org.neo4j.kernel.impl.proc.Procedures;
+import org.neo4j.kernel.internal.GraphDatabaseAPI;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.graphaware.common.util.IterableUtils.getSingle;
 import static org.junit.Assert.assertFalse;
@@ -51,6 +55,26 @@ public class MyRecommendationEngineIntegrationTest extends EmbeddedDatabaseInteg
 
             printRecommendations(person, recommendations);
         }
+    }
+
+    @Test
+    public void shouldRecommendSomethingWithProcedure() throws KernelException {
+        Map<Node, Double> recommendations = new HashMap<Node, Double>();
+        ((GraphDatabaseAPI) getDatabase()).getDependencyResolver().resolveDependency(Procedures.class).register(MeetupRecommendationProcedure.class);
+        try (Transaction tx = getDatabase().beginTx()) {
+            String napoleon = "Napoleon";
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("name", napoleon);
+            Result result = getDatabase().execute("CALL ga.demo.reco({name})", parameters);
+            while (result.hasNext()) {
+                Map<String, Object> record = (Map<String, Object>) result.next();
+                Node item = (Node) record.get("node");
+                double score = (double) record.get("score");
+                recommendations.put(item, score);
+            }
+            tx.success();
+        }
+        assertFalse(recommendations.isEmpty());
     }
 
     private void printRecommendations(Node input, List<Recommendation<Node>> recommendations) {
