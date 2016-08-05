@@ -45,6 +45,17 @@ public class MyRecommendationEngineIntegrationTest extends EmbeddedDatabaseInteg
         };
     }
 
+    @Override
+    protected void registerProcedures(Procedures procedures) {
+        super.registerProcedures(procedures);
+
+        try {
+            procedures.register(MeetupRecommendationProcedure.class);
+        } catch (KernelException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Test
     public void shouldRecommendSomething() {
         try (Transaction tx = getDatabase().beginTx()) {
@@ -60,14 +71,14 @@ public class MyRecommendationEngineIntegrationTest extends EmbeddedDatabaseInteg
     @Test
     public void shouldRecommendSomethingWithProcedure() throws KernelException {
         Map<Node, Double> recommendations = new HashMap<Node, Double>();
-        ((GraphDatabaseAPI) getDatabase()).getDependencyResolver().resolveDependency(Procedures.class).register(MeetupRecommendationProcedure.class);
+
         try (Transaction tx = getDatabase().beginTx()) {
             String napoleon = "Napoleon";
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("name", napoleon);
             Result result = getDatabase().execute("CALL ga.demo.reco({name})", parameters);
             while (result.hasNext()) {
-                Map<String, Object> record = (Map<String, Object>) result.next();
+                Map<String, Object> record = result.next();
                 Node item = (Node) record.get("node");
                 double score = (double) record.get("score");
                 recommendations.put(item, score);
