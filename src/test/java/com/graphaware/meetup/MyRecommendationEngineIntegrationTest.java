@@ -46,7 +46,7 @@ public class MyRecommendationEngineIntegrationTest extends EmbeddedDatabaseInteg
     }
 
     @Override
-    protected void registerProcedures(Procedures procedures) {
+    protected void registerProcedures(Procedures procedures) throws Exception {
         super.registerProcedures(procedures);
 
         try {
