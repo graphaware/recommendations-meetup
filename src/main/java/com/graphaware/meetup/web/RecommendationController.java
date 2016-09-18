@@ -36,7 +36,7 @@ public class RecommendationController {
     }
 
     private Node findByName(String name) {
-        return getSingle(database.findNodes(DynamicLabel.label("Person"), "name", name), "Person with name " + name + " does not exist.");
+        return getSingle(database.findNodes(Label.label("Person"), "name", name), "Person with name " + name + " does not exist.");
     }
 
     private List<RecommendationVO> convert(List<Recommendation<Node>> recommendations) {
