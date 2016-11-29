@@ -12,8 +12,8 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <neo4j.version>3.0.6</neo4j.version>
-        <graphaware.version>3.0.6.43</graphaware.version>
+        <neo4j.version>3.0.7</neo4j.version>
+        <graphaware.version>3.0.7.44</graphaware.version>
     </properties>
 
     <dependencies>
@@ -49,7 +49,7 @@
         <dependency>
             <groupId>com.graphaware.neo4j</groupId>
             <artifactId>recommendation-engine</artifactId>
-            <version>${graphaware.version}.10</version>
+            <version>${graphaware.version}.11</version>
         </dependency>
 
         <dependency>
