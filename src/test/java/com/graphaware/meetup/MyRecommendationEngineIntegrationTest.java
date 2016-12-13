@@ -50,7 +50,7 @@ public class MyRecommendationEngineIntegrationTest extends EmbeddedDatabaseInteg
         super.registerProcedures(procedures);
 
         try {
-            procedures.register(MeetupRecommendationProcedure.class);
+            procedures.registerProcedure(MeetupRecommendationProcedure.class);
         } catch (KernelException e) {
             throw new RuntimeException(e);
         }
