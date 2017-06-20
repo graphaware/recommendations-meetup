@@ -24,9 +24,9 @@ Generating Sample Data
 Deploying the Engine
 --------------------
 
-1. [Download Neo4j 3.1.4](http://neo4j.com/download-thanks/?edition=community&release=3.1.4&flavour=unix)
+1. [Download Neo4j 3.2.1](http://neo4j.com/download-thanks/?edition=community&release=3.2.1&flavour=unix)
 2. unzip to a location
-3. [Download GraphAware](http://graphaware.com/downloads/graphaware-server-all-3.1.4.49.jar) and place into `plugins` of Neo4j
+3. [Download GraphAware](http://graphaware.com/downloads/graphaware-server-all-3.2.1.51.jar) and place into `plugins` of Neo4j
 4. add `dbms.thirdparty_jaxrs_classes=com.graphaware.server=/graphaware` to `conf/neo4j.conf`
 5. run `mvn clean package` on your recommendation engine
 6. take the produced .jar **with dependencies** from `target` and place into `plugins` as well
