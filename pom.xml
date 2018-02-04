@@ -13,7 +13,7 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <neo4j.version>3.3.2</neo4j.version>
-        <graphaware.version>3.3.2.51</graphaware.version>
+        <graphaware.version>3.3.2.52</graphaware.version>
     </properties>
 
     <dependencies>
