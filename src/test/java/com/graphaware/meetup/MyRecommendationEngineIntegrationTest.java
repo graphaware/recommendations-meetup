@@ -7,14 +7,14 @@ import com.graphaware.reco.generic.log.Slf4jRecommendationLogger;
 import com.graphaware.reco.generic.result.Recommendation;
 import com.graphaware.test.data.DatabasePopulator;
 import com.graphaware.test.data.GraphgenPopulator;
-import com.graphaware.test.integration.DatabaseIntegrationTest;
 import com.graphaware.test.integration.EmbeddedDatabaseIntegrationTest;
 import org.junit.Test;
-import org.neo4j.graphdb.*;
-import org.neo4j.kernel.api.exceptions.KernelException;
-import org.neo4j.kernel.impl.proc.ProcedureRegistry;
+import org.neo4j.graphdb.Label;
+import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.Result;
+import org.neo4j.graphdb.Transaction;
+import org.neo4j.internal.kernel.api.exceptions.KernelException;
 import org.neo4j.kernel.impl.proc.Procedures;
-import org.neo4j.kernel.internal.GraphDatabaseAPI;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
@@ -69,7 +69,7 @@ public class MyRecommendationEngineIntegrationTest extends EmbeddedDatabaseInteg
     }
 
     @Test
-    public void shouldRecommendSomethingWithProcedure() throws KernelException {
+    public void shouldRecommendSomethingWithProcedure() {
         Map<Node, Double> recommendations = new HashMap<Node, Double>();
 
         try (Transaction tx = getDatabase().beginTx()) {
