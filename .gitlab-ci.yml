@@ -1,0 +1,11 @@
+include:
+  - project: graphaware/devops/gitlab-ci-templates
+    file: gitlab-ci-templates.yml
+
+stages:
+  - deploy
+  - postDeploy
+
+bumpVersion:
+  extends: .frameworkVersionBump
+  stage: deploy
