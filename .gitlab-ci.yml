@@ -4,8 +4,20 @@ include:
 
 stages:
   - deploy
-  - postDeploy
 
 bumpVersion:
   extends: .frameworkVersionBump
   stage: deploy
+  script:
+    - mvn versions:set-property -Dproperty="graphaware.version" -DnewVersion=["$PARENT_VERSION"] $MAVEN_CLI_OPTS
+    - mvn versions:set-property -Dproperty="neo4j.version" -DnewVersion=["${$PARENT_VERSION%.*}"] $MAVEN_CLI_OPTS
+    - mvn versions:commit $MAVEN_CLI_OPTS
+    - git commit -a -m "Gitlab-ci parent version bump"
+    - git push origin $CI_COMMIT_REF_NAME
+    artifacts:
+      paths: []
+  only:
+    refs:
+      - CICD
+    variables:
+      - $PARENT_VERSION
