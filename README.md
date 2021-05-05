@@ -3,8 +3,6 @@
 GraphAware Recommendations Meetup
 =================================
 
-[![Build Status](https://travis-ci.org/graphaware/recommendations-meetup.png)](https://travis-ci.org/graphaware/recommendations-meetup)
-
 Getting Started
 ---------------
 
